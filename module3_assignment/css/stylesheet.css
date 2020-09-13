@@ -1,0 +1,45 @@
+.navbar-default{
+	background-color: gray;
+	border-radius: 0;
+	position: relative;
+	border: black 3px solid;
+	margin-bottom: 15px;
+
+}
+#button-menu{
+	padding: 20px 0 0 15px;
+	border:1px solid black;
+	margin-left:50px;
+	position: absolute;
+	top:15px;
+	right:5px;
+	
+	
+}
+
+.navbar-header .navbar-brand a , ul li a{
+
+	color: white;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px #222;
+	
+	
+}
+ul li {
+	text-align: center;
+}
+	
+}
+.navbar-header .navbar-brand a{
+	font-size: 1.4em;
+}
+div p {
+	background-color: #9ea2e8;
+	font-weight: 500;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#chicken{
+margin-top: 20px;
+}
