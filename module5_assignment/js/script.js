@@ -103,8 +103,25 @@ function buildAndShowHomeHTML (categories) {
       // variable's name implies it expects.
       // var chosenCategoryShortName = ....
       var nameOfCategory = chooseRandomCategory(categories);
-		var chosenCategoryShortName = nameOfCategory.name;
-		var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml,randomCategoryShortName,"'"+chosenCategoryShortName+"'");
+		var chosenCategoryShortName = nameOfCategory.category.short_name;
+		
+		$ajaxUtils.sendGetRequest(
+    menuItemsTitleHtml,
+    function (menuItemsTitleHtml) {
+      // Retrieve single menu item snippet
+      $ajaxUtils.sendGetRequest(
+        menuItemHtml,
+        function (menuItemHtml) {
+          // Switch CSS class active to menu button
+          switchMenuToActive();
+
+          var homeHtmlToInsertIntoMainPage =
+            buildMenuItemsViewHtml(nameOfCategory,
+                                   menuItemsTitleHtml,
+                                   menuItemHtml);
+
+          insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
+		// var homeHtmlToInsertIntoMainPage = insertProperty(homeHtml,randomCategoryShortName,"'"+chosenCategoryShortName+"'");
 
       // TODO: STEP 3: Substitute {{randomCategoryShortName}} in the home html snippet with the
       // chosen category from STEP 2. Use existing insertProperty function for that purpose.
@@ -124,7 +141,7 @@ function buildAndShowHomeHTML (categories) {
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
-      insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
+      // insertHtml("#main-content", homeHtmlToInsertIntoMainPage);
 
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
